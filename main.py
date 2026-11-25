@@ -28,6 +28,10 @@ def main():
         sys.exit("entry text is blank")
     if "\n" in text or "\r" in text:
         sys.exit("entry must be exactly one line")
+    if "\t" in text:
+        # A tab would render as a gap in a profile line and break the
+        # single-line motto, so it is rejected like a newline.
+        sys.exit("entry must not contain a tab")
     if text != text.strip():
         sys.exit("entry must not start or end with whitespace")
     if "  " in text:
